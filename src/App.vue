@@ -1,9 +1,50 @@
-<script setup lang="ts"></script>
-
 <template>
-  <div>
-    <h1>Hello World</h1>
-  </div>
+  <main class="h-screen flex flex-col bg-slate-50">
+    <header class="flex justify-center">
+      <h1 class="text-lg font-bold">Skrr</h1>
+    </header>
+
+    <div class="pt-5 flex flex-col flex-grow items-center bg-slate-200">
+      <div class="w-1/3">
+        <app-input />
+      </div>
+
+      <div class="mt-5 w-9/12 flex justify-between space-x-5">
+        <div class="w-1/2">
+          <app-todo-group
+            label="Completed Todos"
+            :todos="todoStore.completedTodos"
+          />
+        </div>
+
+        <div class="w-1/2">
+          <app-todo-group
+            label="Pending Todos"
+            :todos="todoStore.pendingTodos"
+          />
+        </div>
+      </div>
+    </div>
+  </main>
 </template>
 
-<style scoped></style>
+<script lang="ts">
+import AppInput from './components/AppInput.vue';
+import AppTodoGroup from './components/AppTodoGroup.vue';
+import { useTodoStore } from './stores/todo-store';
+
+export default {
+  components: {
+    AppInput,
+    AppTodoGroup,
+  },
+
+  setup() {
+    const todoStore = useTodoStore();
+
+    return {
+      todoStore,
+    };
+  },
+};
+</script>
