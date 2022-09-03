@@ -12,7 +12,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 
-import { useTodoStore } from '../stores/todo-store';
+import { useTodoStore } from '../stores/todo/todo-store';
 
 export default defineComponent({
   setup() {

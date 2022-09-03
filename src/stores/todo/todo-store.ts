@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
 
-import { ITodo } from '../types/ITodo';
+import { ITodo } from '../../types/ITodo';
 
 interface ITodoState {
   todos: ITodo[];
@@ -8,7 +8,10 @@ interface ITodoState {
 
 export const useTodoStore = defineStore('todo', {
   state: (): ITodoState => ({
-    todos: [],
+    todos: window.localStorage.getItem('todos')
+      ? (JSON.parse(window.localStorage.getItem('todos') as string)
+          .todos as ITodo[])
+      : [],
   }),
 
   getters: {

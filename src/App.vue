@@ -20,7 +20,7 @@
 import AppInput from './components/AppInput.vue';
 import AppTodoGroup from './components/AppTodoGroup.vue';
 
-import { useTodoStore } from './stores/todo-store';
+import { useTodoStore } from './stores/todo/todo-store';
 
 export default {
   components: {
