@@ -9,20 +9,8 @@
         <app-input />
       </div>
 
-      <div class="mt-5 w-9/12 flex justify-between space-x-5">
-        <div class="w-1/2">
-          <app-todo-group
-            label="Completed Todos"
-            :todos="todoStore.completedTodos"
-          />
-        </div>
-
-        <div class="w-1/2">
-          <app-todo-group
-            label="Pending Todos"
-            :todos="todoStore.pendingTodos"
-          />
-        </div>
+      <div class="mt-5 w-9/12 flex justify-center">
+        <app-todo-group :todos="todoStore.todos" />
       </div>
     </div>
   </main>
@@ -31,6 +19,7 @@
 <script lang="ts">
 import AppInput from './components/AppInput.vue';
 import AppTodoGroup from './components/AppTodoGroup.vue';
+
 import { useTodoStore } from './stores/todo-store';
 
 export default {
