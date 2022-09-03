@@ -26,7 +26,7 @@ export const useTodoStore = defineStore('todo', {
 
   actions: {
     addTodo(todo: ITodo) {
-      this.todos = [...this.todos, todo];
+      this.todos = [todo, ...this.todos];
     },
 
     setTodoCompleted(id: number, completed: boolean) {
