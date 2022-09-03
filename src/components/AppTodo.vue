@@ -7,7 +7,7 @@
         type="checkbox"
         :value="completed"
         :checked="completed"
-        @change="(event) => setTodoCompleted(event.target.value)"
+        @change="(event) => setTodoCompleted(event?.target?.value === 'true')"
       />
 
       <button
