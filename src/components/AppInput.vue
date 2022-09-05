@@ -1,6 +1,6 @@
 <template>
   <input
-    v-model="inputValue"
+    v-model="newTodo"
     type="text"
     class="px-3 w-full text-lg shadow-xl rounded-lg"
     placeholder="Add a todo"
@@ -10,37 +10,41 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, ref } from 'vue';
 
 import { useTodoStore } from '../stores/todo/todo-store';
 
 export default defineComponent({
   setup() {
+    // stores
     const todoStore = useTodoStore();
 
-    return {
-      todoStore,
-    };
-  },
+    // states
+    const newTodo = ref('');
 
-  data() {
-    return {
-      inputValue: '',
-    };
-  },
-
-  methods: {
-    onSubmit() {
-      if (this.inputValue) {
-        this.todoStore.addTodo({
+    // methods
+    const onSubmit = () => {
+      if (newTodo.value) {
+        todoStore.addTodo({
           id: Date.now(),
-          text: this.inputValue,
+          text: newTodo.value,
           completed: false,
         });
 
-        this.inputValue = '';
+        newTodo.value = '';
       }
-    },
+    };
+
+    return {
+      // store
+      todoStore,
+
+      // state
+      newTodo,
+
+      // methods
+      onSubmit,
+    };
   },
 });
 </script>

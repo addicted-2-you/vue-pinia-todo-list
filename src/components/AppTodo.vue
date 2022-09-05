@@ -47,20 +47,25 @@ export default defineComponent({
   setup(props) {
     const todoStore = useTodoStore();
 
+    // methods
+    const setTodoCompleted = (completed: boolean) => {
+      todoStore.setTodoCompleted(props.id, completed);
+    };
+
+    const deleteTodo = () => {
+      todoStore.removeTodo(props.id);
+    };
+
     return {
       props,
+
+      // stores
       todoStore,
+
+      // methods
+      setTodoCompleted,
+      deleteTodo,
     };
-  },
-
-  methods: {
-    setTodoCompleted(completed: boolean) {
-      this.todoStore.setTodoCompleted(this.props.id, completed);
-    },
-
-    deleteTodo() {
-      this.todoStore.removeTodo(this.props.id);
-    },
   },
 });
 </script>
